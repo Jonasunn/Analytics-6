@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Analytics Dashboard</title>
+  <link rel="stylesheet" href="admin.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="brand">Analytics</div>
+    <nav>
+      <a class="active" href="admin.html">Dashboard</a>
+      <a href="registrations.html">Registrations</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="filters card">
+      <div class="row">
+        <label>Campaign
+          <select id="campaign"></select>
+        </label>
+        <label>Banner
+          <select id="banner"></select>
+        </label>
+        <label>Days
+          <select id="days">
+            <option value="7">7</option>
+            <option value="28" selected>28</option>
+            <option value="90">90</option>
+            <option value="365">365</option>
+          </select>
+        </label>
+        <button id="apply">Apply</button>
+        <button id="manageBanners" class="ghost" type="button">Manage banners</button>
+      </div>
+      <div class="hint muted">Leave filters blank to see everything.</div>
+    </section>
+
+    <section class="kpis" id="kpis"></section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Trend</h2>
+        <canvas id="line"></canvas>
+      </div>
+      <div class="card">
+        <h2>Funnel</h2>
+        <div id="funnel" class="funnel"></div>
+        <div class="muted" id="rates"></div>
+      </div>
+    </section>
+  </main>
+
+    <div id="bannerModal" class="modal hidden">
+      <div class="modal-card">
+        <div class="modal-head">
+          <div class="modal-title">Banners</div>
+          <button id="closeBannerModal" class="ghost" type="button">Close</button>
+        </div>
+
+        <form id="bannerForm" class="banner-form">
+          <input id="bannerName" placeholder="Banner name (e.g. Fermingar 1018x360)" />
+          <input id="bannerUrl" placeholder="Banner URL (https://.../index.html)" />
+          <button type="submit">Add</button>
+        </form>
+
+        <div class="muted" style="margin:10px 0 6px;">Add banner URLs here to quickly switch filters. Delete removes it from this list only.</div>
+        <div id="bannerList"></div>
+      </div>
+    </div>
+    
+
+  <script src="admin.js"></script>
+</body>
+</html>

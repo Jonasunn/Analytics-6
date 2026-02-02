@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Registrations</title>
+  <link rel="stylesheet" href="admin.css"/>
+</head>
+<body>
+  <header class="top">
+    <div class="brand">Analytics</div>
+    <nav>
+      <a href="admin.html">Dashboard</a>
+      <a class="active" href="registrations.html">Registrations</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="filters card">
+      <div class="row">
+        <label>Campaign
+          <select id="campaign"></select>
+        </label>
+        <label>Game/Banner
+          <select id="game"></select>
+        </label>
+        <label>Search
+          <input id="q" placeholder="Name/email/phone"/>
+        </label>
+        <button id="apply">Apply</button>
+      </div>
+      <div class="hint muted">Showing latest 1000 registrations.</div>
+    </section>
+
+    <section class="card">
+      <div id="table"></div>
+    </section>
+  </main>
+
+  <script src="registrations.js"></script>
+</body>
+</html>
