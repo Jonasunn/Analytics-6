@@ -50,6 +50,7 @@ async function load(){
   await fillFilters();
 
   async function render(){
+    try {
     const days = document.getElementById("days").value;
     const campaign = document.getElementById("campaign").value;
     const banner = document.getElementById("banner").value;
@@ -88,9 +89,17 @@ async function load(){
       ]},
       options:{ responsive:true, plugins:{ legend:{ display:true } } }
     });
+    } catch (err) {
+      console.error(err);
+      alert(err?.message || String(err));
+    }
   }
 
-  document.getElementById("apply").addEventListener("click", render);
+  document.getElementById("apply").addEventListener("click", (e)=>{ e.preventDefault(); render(); });
+  // Optional: auto-refresh when filters change
+  document.getElementById("campaign").addEventListener("change", render);
+  document.getElementById("banner").addEventListener("change", render);
+  document.getElementById("days").addEventListener("change", render);
   render();
 }
 
